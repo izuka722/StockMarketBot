@@ -22,7 +22,7 @@ def rmAngles(string_with_tags):
 			less = string_with_tags.find("<")
 			greater = string_with_tags.find(">")
 			string_with_tags = string_with_tags[:less] + string_with_tags[greater+1:] 
-			#string=string[:index] + string[index+1:] removes the character at [index], but not at [index+1]
+			#string = string[:index] + string[index+1:] removes the character at [index], but not at [index+1]
 	else:
 		print("Error: spare \"<\" or \">\" character in: \n" + string_with_tags) # if there was a spare, the parsing algorithm would break
 	return string_with_tags ##don't want to do string = string_with_tags somewhere just for return string 
@@ -64,7 +64,7 @@ def nyt_paragraphs(url):
 
 def get_nyt(date, nyt_key): #nyt archive api currently
 	#date should be something like /2021/11  /<year>/<month>
-	new_york_times = requests.get("https://api.nytimes.com/svc/archive/v1"+date+".json?api-key="+str(nyt_key))
+	new_york_times = requests.get("https://api.nytimes.com/svc/archive/v1" + date + ".json?api-key="+str(nyt_key))
 	new_york_times = new_york_times.json()["response"]["docs"]
 	return pd.json_normalize(new_york_times)
 	
